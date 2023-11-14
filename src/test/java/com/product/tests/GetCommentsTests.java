@@ -4,7 +4,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.product.api.StatusCode;
 import com.product.api.applicationApi.CommentsApi;
 import com.product.api.applicationApi.UsersApi;
-import com.product.pojo.playlist.Error;
 import com.product.pojo.socialNetwork.GetComment;
 import com.product.pojo.socialNetwork.Post;
 import com.product.utils.DataLoader;
@@ -32,16 +31,11 @@ public class GetCommentsTests extends BaseTest {
         assertThat(response.path("[0].body").toString(), equalTo(DataLoader.getInstance().getCommentBody()));
     }
 
+
     //can be moved to some common class for better reusability. Keeping here for demo
     @Step
     public void assertStatusCode(int actualStatusCode, StatusCode statusCode){
         assertThat(actualStatusCode, equalTo(statusCode.code));
     }
 
-    //can be moved to some common class for better reusability. Keeping here for demo
-    @Step
-    public void assertError(Error responseErr, StatusCode statusCode){
-        assertThat(responseErr.getError().getStatus(), equalTo(statusCode.code));
-        assertThat(responseErr.getError().getMessage(), equalTo(statusCode.msg));
-    }
 }

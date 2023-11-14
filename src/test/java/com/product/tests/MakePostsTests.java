@@ -2,9 +2,6 @@ package com.product.tests;
 
 import com.product.api.StatusCode;
 import com.product.api.applicationApi.PostsApi;
-import com.product.api.applicationApi.UsersApi;
-import com.product.pojo.playlist.Error;
-import com.product.pojo.playlist.Playlist;
 import com.product.pojo.socialNetwork.Post;
 import com.product.utils.DataLoader;
 import io.qameta.allure.*;
@@ -54,10 +51,4 @@ public class MakePostsTests extends BaseTest {
         assertThat(actualStatusCode, equalTo(statusCode.code));
     }
 
-    //can be moved to some common class for better reusability. Keeping here for demo
-    @Step
-    public void assertError(Error responseErr, StatusCode statusCode){
-        assertThat(responseErr.getError().getStatus(), equalTo(statusCode.code));
-        assertThat(responseErr.getError().getMessage(), equalTo(statusCode.msg));
-    }
 }
